@@ -1,15 +1,9 @@
 #!/usr/bin/python3
 def uppercase(str):
-    letter = str
-    for chara in range(len(str)):
-        check = ord(letter[chara])
+    for chara in str:
+        check = ord(chara)
         if check >= 97 and check <= 122:
             dig = check - 32
-        else:
-            dig = check
-        newCha = chr(dig)
-        if len(str) != 0:
-            if chara == len(str) - 1:
-                print("{}".format(newCha))
-            else:
-                print("{}".format(newCha), end='')
+            chara = chr(dig)
+        print("{}".format(chara), end='')
+    print("")
