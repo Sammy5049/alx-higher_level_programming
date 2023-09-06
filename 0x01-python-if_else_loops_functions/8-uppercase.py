@@ -8,7 +8,8 @@ def uppercase(str):
         else:
             dig = check
         newCha = chr(dig)
-        if chara == len(str) - 1:
-            print("{}".format(newCha))
-        else:
-            print("{}".format(newCha), end='')
+        if len(str) != 0:
+            if chara == len(str) - 1:
+                print("{}".format(newCha))
+            else:
+                print("{}".format(newCha), end='')
