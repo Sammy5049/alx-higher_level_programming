@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 def fizzbuzz():
  for numb in range(1, 101):
   if numb % 3 == 0:
