@@ -5,5 +5,6 @@ def uppercase(str):
         if check >= 97 and check <= 122:
             dig = check - 32
             chara = chr(dig)
+        
         print("{}".format(chara), end="")
-    print("")
+    print()
