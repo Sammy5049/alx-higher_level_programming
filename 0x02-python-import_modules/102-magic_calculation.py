@@ -2,10 +2,11 @@
 
 
 def magic_calculation(a, b):
-    add, sub = magic_calculation_102.add, magic_calculation_102.sub
+
+    from magic_calculation_102 import add, sub
 
     if a < b:
-        c = add(a, b)i
+        c = add(a, b)
 
         for num in range(4, 6):
             c = add(c, num)
