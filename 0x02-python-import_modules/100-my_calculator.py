@@ -12,7 +12,8 @@ def main():
         print("Usage: {} <a> <operator> <b>".format(sys.argv[0]))
         sys.exit(1)
 
-    lOp = {"+":add, "-":sub, "*":mul, "/":div}
+    lOp = {"+": add, "-": sub, "*": mul, "/": div}
+
     if sys.argv[2] not in list(lOp.keys()):
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
