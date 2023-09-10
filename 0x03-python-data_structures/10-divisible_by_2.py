@@ -8,4 +8,4 @@ def divisible_by_2(my_list=[]):
     for i in range(length):
         if my_list[i] % 2 == 0:
             my_new_list[i] = my_list[i]
-    return my_new_list
+    return (my_new_list)
