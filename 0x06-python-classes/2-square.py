@@ -7,7 +7,7 @@ and set private instance of size.
 """
 
 
-class Square:
+class Square():
     """Defines the class"""
 
     def __init__(self, size=0):
