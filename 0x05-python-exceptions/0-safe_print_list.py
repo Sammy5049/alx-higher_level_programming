@@ -8,8 +8,6 @@ def safe_print_list(my_list=[], x=0):
                 counter += 1
         print()
         return (counter)
-    except:
+    except Exception as e:
+        print("An error occured: {}".format(e))
         return (0)
-
-
-
