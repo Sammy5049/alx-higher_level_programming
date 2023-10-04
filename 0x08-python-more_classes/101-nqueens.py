@@ -1,63 +1,61 @@
-#!/usr/bin/python3
-"""N Queens Module.
-
-Contains the N Queens problem solver.
-"""
 import sys
 
 
-def error_exit(message="", code=1):
-    """Handles exit.
-
-    Args:
-        message (str): the message to display on stdout.
-        code (int): the exit code.
-    """
-    print(message)
-    exit(code)
-
-
-def test_pos(board, y):
-    """Tests if wether a queen can be placed at the current position.
-
-    Args:
-        board (list): the chessboard.
-        y (int): the height parameter.
-    """
-    for i in range(y):
-        if board[y][1] is board[i][1]:
+def is_safe(board, row, col, n):
+    # Check if there is a queen in the same column
+    for i in range(row):
+        if board[i][col] == 'Q':
             return False
-        if abs(board[y][1] - board[i][1]) == y - i:
+
+    # Check upper left diagonal
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 'Q':
             return False
+
+    # Check upper right diagonal
+    for i, j in zip(range(row, -1, -1), range(col, n)):
+        if board[i][j] == 'Q':
+            return False
+
     return True
 
 
-def rec_backtrack(board, y):
-    """Backtrack the possibilities.
+def solve_n_queens(n):
+    if n < 4:
+        print("N must be at least 4")
+        return
 
-    Args:
-        board (list): the chessboard.
-        y (int): the height parameter.
-    """
-    if y is N:
-        print(board)
-    else:
-        for x in range(N):
-            board[y][1] = x
-            if test_pos(board, y):
-                rec_backtrack(board, y + 1)
+    board = [['.' for _ in range(n)] for _ in range(n)]
+    solutions = []
+
+    def backtrack(row):
+        if row == n:
+            solutions.append([''.join(row) for row in board])
+            return
+
+        for col in range(n):
+            if is_safe(board, row, col, n):
+                board[row][col] = 'Q'
+                backtrack(row + 1)
+                board[row][col] = '.'
+
+    backtrack(0)
+
+    for solution in solutions:
+        for row in solution:
+            print(row)
+        print()
 
 
-if len(sys.argv) is not 2:
-    error_exit("Usage: nqueens N")
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
 
-try:
-    N = int(sys.argv[1])
-except:
-    error_exit("N must be a number")
+    try:
+        N = int(sys.argv[1])
+    except ValueError:
+        print("N must be a number")
+        sys.exit(1)
 
-if N < 4:
-    error_exit("N must be at least 4")
-
-board = [[y, 0] for y in range(N)]
-rec_backtrack(board, 0)
+    solve_n_queens(N)
