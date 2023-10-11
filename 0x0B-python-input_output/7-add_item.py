@@ -20,19 +20,3 @@ def load_from_json_file(filename):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return None
-
-
-if len(sys.argv) > 1:
-    try:
-        existing_list = load_from_json_file("add_item.json")
-    except FileNotFoundError:
-        existing_list = []
-
-    arguments = sys.argv[1:]
-    existing_list.extend(arguments)
-
-    save_to_json_file(existing_list, "add_item.json")
-else:
-    print("Usage: python script_name.py arg1 arg2 ...")
-
-
