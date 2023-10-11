@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """Defines a class Student."""
+
+
 class Student:
     """Rep a student."""
-
     def __init__(self, first_name, last_name, age):
         """Initialize a new Student.
 
@@ -17,10 +18,5 @@ class Student:
 
 
 def to_json(self):
-    """Get a dictionary repr of Student."""
-    list_ster = {}
-
-    for key, value in self.__dict__.items():
-        if isinstance(value, (int, str)):
-            list_ster[key] = value
-    return list_ster
+    """Get a dictionary representation of the Student."""
+    return self.__dict__
