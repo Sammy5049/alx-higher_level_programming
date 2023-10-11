@@ -1,15 +1,38 @@
 #!/usr/bin/python3
 """Add all arguments to a Python list and save them to a file."""
 import sys
+import json
 
-if __name__ == "__main__":
-    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-    load_from_json_file = \
-        __import__('6-load_from_json_file').load_from_json_file
 
+def save_to_json_file(my_obj, filename):
     try:
-        items = load_from_json_file("add_item.json")
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(my_obj, file)
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+
+def load_from_json_file(filename):
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            loaded_obj = json.load(file)
+            return loaded_obj
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return None
+
+
+if len(sys.argv) > 1:
+    try:
+        existing_list = load_from_json_file("add_item.json")
     except FileNotFoundError:
-        items = []
-    items.extend(sys.argv[1:])
-    save_to_json_file(items, "add_item.json")
+        existing_list = []
+
+    arguments = sys.argv[1:]
+    existing_list.extend(arguments)
+
+    save_to_json_file(existing_list, "add_item.json")
+else:
+    print("Usage: python script_name.py arg1 arg2 ...")
+
+
