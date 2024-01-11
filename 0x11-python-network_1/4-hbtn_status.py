@@ -13,4 +13,3 @@ if __name__ == "__main__":
     print("\t- type: {}".format(type(r.text)))
 
     print("\t- content: {}".format(r.text))
-
